@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImageCropViewSample.MainPage"
+             Title="Draw shapes demo"
+             xmlns:icv="clr-namespace:ImageCropView.MAUI;assembly=ImageCropView.MAUI">
+    <VerticalStackLayout Margin="15">
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Label Text="Zoom" VerticalOptions="Center"/>
+            <!--<Stepper HorizontalOptions="FillAndExpand" Increment="10" Minimum="-50" Maximum="50" Value="{Binding XOffset}"/>
+                <Stepper HorizontalOptions="FillAndExpand" Increment="10" Minimum="-50" Maximum="50" Value="{Binding YOffset}"/>-->
+            <Stepper x:Name="zoomStepper" HorizontalOptions="FillAndExpand" Increment="0.5" Minimum="1" Maximum="4" ValueChanged="zoomStepper_ValueChanged"/>
+        </StackLayout>
+        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10" Margin="20">
+            <Button x:Name="urlSourceButton" Text="URI" Clicked="urlSourceButton_Clicked"/>
+            <Button x:Name="assetSourceButton" Grid.Column="1" Text="Asset" Clicked="assetSourceButton_Clicked"/>
+        </Grid>
+        <Grid HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" IsClippedToBounds="True">
+            <icv:ImageCropView x:Name="crop">
+                <icv:ImageCropView.FrameView>
+                    <Path Fill="#80ffffff" WidthRequest="300" HeightRequest="300" StrokeThickness="0" InputTransparent="True">
+                        <Path.Data>
+                            <GeometryGroup>
+                                <RectangleGeometry Rect="0,0,300, 300"/>
+                                <RectangleGeometry Rect="75, 50, 150, 200" />
+                            </GeometryGroup>
+                        </Path.Data>
+                    </Path>
+                </icv:ImageCropView.FrameView>
+            </icv:ImageCropView>
+        </Grid>
+        <Button x:Name="save" Clicked="SaveClicked" Text="Save" Margin="10" />
+        <Image x:Name="result" WidthRequest="200" HeightRequest="200"/>
+    </VerticalStackLayout>
+</ContentPage>
