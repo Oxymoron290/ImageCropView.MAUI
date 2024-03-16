@@ -1,5 +1,5 @@
 # ImageCropView.MAUI
-.NET MAUI replacement for the Xamarin Forms ImageCropView library.
+.NET MAUI replacement for the Xamarin Forms ImageCropView library found here https://github.com/daniel-luberda/DLToolkit.Forms.Controls/tree/master/ImageCropView
 
 The ImageCropView package for Xamarin Forms used FFImageLoading, this is not well supported on .NET MAUI. This implementation uses a GraphicsView Canvas and IImage under the covers so there are no third party packages needed. 
 
